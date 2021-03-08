@@ -18,28 +18,12 @@ app.set('view engine', 'ejs');
 // app.set('views', 'myviews');
 
 app.get('/', (req, res) => {
-  /*
-  fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(data => generatePosts(data))
-        .catch(e => console.log(e))
-  
-  var posts = [
-    {userId: 0, id:0, title: 'Yoshi finds eggs', body: 'Lorem ipsum dolor sit amet consectetur'},
-    {userId: 1, id:1, title: 'Mario finds stars', body: 'Lorem ipsum dolor sit amet consectetur'},
-    {userId: 2, id:2, title: 'How to defeat bowser', body: 'Lorem ipsum dolor sit amet consectetur'},
-    {userId: 6, id:4, title: 'Yoshi finds nothing', body: 'Lorem ipsum dolor works'}
-  ];*/
+  //Get posts from jsonplacholder and send them to index.ejs as blog array
   fetch("https://jsonplaceholder.typicode.com/posts")
       .then(response => response.json())
       .then(data => generatePosts(data))
       .catch(e => console.log(e))
-  /*generatePosts(posts);
-  function checkPosts(data){
-    console.log("Check")
-    console.log(data)
-    posts.push(data)
-  }*/
+  
   function generatePosts(data){
         var blogs = [];
         $.each(data, function(key, value){
@@ -49,13 +33,6 @@ app.get('/', (req, res) => {
         })
         res.render('index', { title: 'Home', blogs });
     }
-    
-  /*const blogs = [
-    {title: 'Yoshi finds eggs', body: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'Mario finds stars', body: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'How to defeat bowser', body: 'Lorem ipsum dolor sit amet consectetur'},
-  ];
-  res.render('index', { title: 'Home', blogs });*/
 });
 
 app.get('/about', (req, res) => {
