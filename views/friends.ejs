@@ -1,0 +1,25 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+  
+    <div class="friends content">
+      <h2>My Friends</h2>
+      <% if (friends.length > 0) { %>
+        <% friends.forEach(friend => { %>
+  
+          <h3 class="title"><%= friend.name %></h3>
+  
+        <% }) %>
+      <% } else { %>
+        <p>You have no friends...</p>
+      <% } %>
+    </div>
+  
+    <%- include("./partials/footer.ejs") %>
+  </body>
+
+
+</html>

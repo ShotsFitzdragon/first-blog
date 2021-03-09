@@ -43,6 +43,24 @@ app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 });
 
+app.get('/friends', (req, res) => {
+  //Get posts from jsonplacholder and send them to friends.ejs as friend array
+  fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(data => generateFriends(data))
+      .catch(e => console.log(e))
+  
+  function generateFriends(data){
+        var friends = [];
+        $.each(data, function(key, value){
+            console.log(key)
+            console.log(value)
+            friends.push(value)
+        })
+        res.render('friends', { title: 'My Friends', friends });
+    }
+});
+
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
